@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<head>
+  <title>Choose Your Own Adventure</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}" />
+</head>
+
+<body>
+  <h3>Choose Your Own Adventure</h3>
+  <div class="dialog">
+    {% for line in prompt %}
+      <p class="{{ 'story' if line[0].startswith('STORY') else 'you' }}">{{ line[1] }}</p>
+    {% endfor %}
+  </div>
+  <form action="/" method="post">
+    <input type="text" name="response" autocomplete="off" placeholder="???" required />
+    <input type="submit" value="Enter" />
+  </form>
+</body>
